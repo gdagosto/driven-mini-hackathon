@@ -22,14 +22,13 @@
     </div>
 
     <div class="search">
-        <input type="text" class="search-bar">
+        <input id='cityInput' type="text" class="search-bar" placeholder='your city here' onkeydown="cityInputOnKeyDown(event)"/>
         <button class='city-location' onclick="getCityLocation()">
-            <ion-icon name="search"></ion-icon>
+            <ion-icon name="search"/>
         </button>
 
-
         <button class='my-location' onclick="getMyLocation()">
-            <ion-icon name="home"></ion-icon>
+            <ion-icon name="home"/>
         </button>
     </div>
     

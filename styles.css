@@ -1,3 +1,16 @@
+@property --gradientColor1 {
+  syntax: '<color>';
+  initial-value: black;
+  inherits: false;
+}
+
+@property --gradientColor2 {
+  syntax: '<color>';
+  initial-value: #333;
+  inherits: false;
+} 
+
+
 *{
     margin: 0;
     padding: 0;
@@ -5,23 +18,37 @@
     user-select: none;
 }
 body{
+    --transitionTimer: 500ms;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     width: 100%;
     font-family: 'Open Sans', sans-serif;
-    background-image: linear-gradient(rgb(0, 0, 0) 0%, rgb(0, 0, 0) 100%);
     color: white;
+    background: linear-gradient(var(--gradientColor1), var(--gradientColor2));
+    transition: --gradientColor1 var(--transitionTimer), --gradientColor1 var(--transitionTimer); */
 }
 .weather-box{
     position: fixed;
+    top: 30%;
+    transform: translateY(-50%);
+    transition: opacity var(--transitionTimer), color 250ms;
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100px;
-    top: 20%;
 }
+
+.weather-box .row{
+    display: flex;
+}
+.weather-box .col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .weather-box h1{
     font-size: 50px;
     text-align: center;
@@ -42,14 +69,14 @@ body{
 }
 .min-max{
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
     width: 200px;
     justify-content: space-between;
     font-size: 16px;
 }
-.min-max h5{
+/* .min-max h5{
     margin-top: 10px;
-}
+} */
 .search{
     position: fixed;
     display: flex;
@@ -63,8 +90,9 @@ body{
     text-align: center;
     height: 30px;
     opacity: 0.7;
+    transition: 200ms;
 }
-input:focus {
+input:focus, input:hover {
     outline: 0;
     opacity: 1;
 }
@@ -82,26 +110,29 @@ button {
 }
 button:hover {
     opacity: 1;
-    transition: 500ms;
-    transform: scale(1.1);
+    transition: var(--transitionTimer);
 }
+
+
 .Clouds{
-    background-image: linear-gradient(rgba(55,55,193,1) 0%, rgba(108,230,255,1) 115%);
-    color: white;
+  --gradientColor1: rgb(55,55,193);
+  --gradientColor2: rgb(108,230,255);
 }
+
 .Clear{
-    background-image: linear-gradient(rgba(255,253,219,1) 0%, rgba(255,214,86,1) 115%);
-    color: #2B2300;
+  --gradientColor1: rgb(255,253,219);
+  --gradientColor2: rgb(255,214,86);
+  color: black;
+
 }
+
 .Snow{
-    background-image: linear-gradient(#AAD688 0%, #98C377 115%);
-    color: #47894B;
+  --gradientColor1: #AAD688;
+  --gradientColor2: #98C377;
 }
+
 .Rain{
-    background-image: linear-gradient(rgba(55,55,193,1) 0%, rgba(108,230,255,1) 115%);
-    color: white;
-}
-.default{
-    background-image: black;
-    color: white;
+  --gradientColor1: rgb(55,55,193);
+  --gradientColor2: rgb(108,230,255);
+
 }
